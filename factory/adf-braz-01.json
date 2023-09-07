@@ -1,0 +1,9 @@
+{
+	"name": "adf-braz-01",
+	"location": "brazilsouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ff82f4f4-ba04-4d39-870a-68fa7ec10ab6",
+		"tenantId": "84c31ca0-ac3b-4eae-ad11-519d80233e6f"
+	}
+}
