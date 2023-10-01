@@ -1,9 +1,9 @@
 {
-	"name": "FULL_LOAD_AZURE_SQL_TO_ADLS",
+	"name": "FULL_LOAD",
 	"properties": {
 		"activities": [
 			{
-				"name": "ForEach1",
+				"name": "For each filtered item",
 				"type": "ForEach",
 				"dependsOn": [
 					{
@@ -21,7 +21,7 @@
 					},
 					"activities": [
 						{
-							"name": "Copy data1",
+							"name": "Copy table",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -70,7 +70,11 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"tb_name": {
-											"value": "@concat(item().TABLE_SCHEMA, '.', item().TABLE_NAME, '.parquet')",
+											"value": "@item().TABLE_NAME",
+											"type": "Expression"
+										},
+										"tb_schema": {
+											"value": "@item().TABLE_SCHEMA",
 											"type": "Expression"
 										}
 									}
@@ -81,7 +85,7 @@
 				}
 			},
 			{
-				"name": "Lookup1",
+				"name": "Find all tables",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -111,7 +115,7 @@
 				"type": "Filter",
 				"dependsOn": [
 					{
-						"activity": "Lookup1",
+						"activity": "Find all tables",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -137,7 +141,7 @@
 			}
 		},
 		"folder": {
-			"name": "FULL"
+			"name": "AdventureWorks_SALES_LT"
 		},
 		"annotations": []
 	}
