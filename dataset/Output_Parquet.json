@@ -1,5 +1,5 @@
 {
-	"name": "Parquet1",
+	"name": "Output_Parquet",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "adlsbraz01",
@@ -12,6 +12,9 @@
 			"tb_schema": {
 				"type": "string"
 			}
+		},
+		"folder": {
+			"name": "AZ_SQL/SalesLT"
 		},
 		"annotations": [],
 		"type": "Parquet",

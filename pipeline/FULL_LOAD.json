@@ -60,13 +60,13 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "AzureSqlTable1",
+									"referenceName": "Input_SQL",
 									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "Parquet1",
+									"referenceName": "Output_Parquet",
 									"type": "DatasetReference",
 									"parameters": {
 										"tb_name": {
@@ -104,7 +104,7 @@
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "Input_SQL",
 						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
