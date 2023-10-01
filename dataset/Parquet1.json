@@ -8,6 +8,9 @@
 		"parameters": {
 			"tb_name": {
 				"type": "string"
+			},
+			"tb_schema": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
@@ -19,7 +22,10 @@
 					"value": "@dataset().tb_name",
 					"type": "Expression"
 				},
-				"folderPath": "landing/AdventureWorks",
+				"folderPath": {
+					"value": "@concat('landing/AdventureWorks/', dataset().tb_schema)",
+					"type": "Expression"
+				},
 				"fileSystem": "landing"
 			},
 			"compressionCodec": "snappy"
