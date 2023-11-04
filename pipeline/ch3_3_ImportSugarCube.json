@@ -28,62 +28,84 @@
 							"type": "JsonReadSettings"
 						}
 					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.Sales_LOAD",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
 						"mappings": [
 							{
 								"source": {
-									"name": "{",
-									"type": "String"
+									"path": "$['Month']"
 								},
-								"sink": {
-									"name": "RowId",
-									"type": "Int32"
-								}
-							},
-							{
-								"sink": {
-									"name": "Retailer",
-									"type": "String"
-								}
-							},
-							{
 								"sink": {
 									"name": "SalesMonth",
 									"type": "DateTime"
 								}
 							},
 							{
+								"source": {
+									"path": "$['Company']"
+								},
+								"sink": {
+									"name": "Retailer",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Sales'][0]['Product']"
+								},
 								"sink": {
 									"name": "Product",
 									"type": "String"
 								}
 							},
 							{
+								"source": {
+									"path": "$['Sales'][0]['ManufacturerProductCode']"
+								},
 								"sink": {
 									"name": "ManufacturerProductCode",
 									"type": "String"
 								}
 							},
 							{
-								"sink": {
-									"name": "SalesValueUSD",
-									"type": "Decimal"
-								}
-							},
-							{
+								"source": {
+									"path": "$['Sales'][0]['Units']"
+								},
 								"sink": {
 									"name": "UnitsSold",
 									"type": "Int32"
 								}
+							},
+							{
+								"source": {
+									"path": "$['Sales'][0]['Value']"
+								},
+								"sink": {
+									"name": "SalesValueUSD",
+									"type": "Decimal"
+								}
 							}
-						]
+						],
+						"collectionReference": ""
 					}
 				},
 				"inputs": [
 					{
 						"referenceName": "ch3_3_InputSugarCube",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ch_3_Output",
 						"type": "DatasetReference"
 					}
 				]
