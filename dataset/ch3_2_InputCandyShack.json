@@ -1,0 +1,26 @@
+{
+	"name": "ch3_2_InputCandyShack",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlsbraz01",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ADLS_Landing/azure-data-factory-by-example/ch3"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "landing/azure-data-factory-by-example/SampleData/CandyShack",
+				"fileSystem": "landing"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
