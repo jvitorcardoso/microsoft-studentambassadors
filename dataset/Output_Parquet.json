@@ -1,0 +1,38 @@
+{
+	"name": "Output_Parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlsbraz01",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tb_name": {
+				"type": "string"
+			},
+			"tb_schema": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "AZ_SQL/SalesLT"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().tb_name",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat('landing/AdventureWorks/',dataset().tb_schema)",
+					"type": "Expression"
+				},
+				"fileSystem": "landing"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

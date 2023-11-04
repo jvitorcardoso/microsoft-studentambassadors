@@ -1,0 +1,151 @@
+{
+	"name": "FULL_LOAD",
+	"properties": {
+		"activities": [
+			{
+				"name": "For each filtered item",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Filtering SalesLT",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Filtering SalesLT').output.Value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy table",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": {
+										"value": "SELECT * FROM @{item().TABLE_SCHEMA}.@{item().TABLE_NAME}",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "Input_SQL",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Output_Parquet",
+									"type": "DatasetReference",
+									"parameters": {
+										"tb_name": {
+											"value": "@item().TABLE_NAME",
+											"type": "Expression"
+										},
+										"tb_schema": {
+											"value": "@item().TABLE_SCHEMA",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "Find all tables",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT TABLE_SCHEMA, TABLE_NAME\nFROM INFORMATION_SCHEMA.TABLES",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "Input_SQL",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Filtering SalesLT",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Find all tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Find all tables').output.value",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item().TABLE_SCHEMA, pipeline().parameters.TABLE_SCHEMA)",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"TABLE_SCHEMA": {
+				"type": "string",
+				"defaultValue": "SalesLT"
+			}
+		},
+		"folder": {
+			"name": "AdventureWorks/SalesLT"
+		},
+		"annotations": []
+	}
+}
