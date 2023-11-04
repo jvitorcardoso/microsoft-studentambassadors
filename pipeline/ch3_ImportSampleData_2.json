@@ -20,8 +20,8 @@
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": "landing/azure-data-factory-by-example/SampleData/SweetTreats",
-							"wildcardFileName": "*",
+							"wildcardFolderPath": "landing/azure-data-factory-by-example/SampleData/CandyShack",
+							"wildcardFileName": "2020-04.csv",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -47,7 +47,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ch3_InputSampleData_1",
+						"referenceName": "ch3_InputSampleData_2",
 						"type": "DatasetReference"
 					}
 				],
