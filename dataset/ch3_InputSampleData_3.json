@@ -1,0 +1,53 @@
+{
+	"name": "ch3_InputSampleData_3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlsbraz01",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ADLS_Landing/azure-data-factory-by-example/ch3"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "April.json",
+				"folderPath": "landing/azure-data-factory-by-example/SampleData/SugarCube/2020/Q2",
+				"fileSystem": "landing"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"Month": {
+					"type": "string"
+				},
+				"Company": {
+					"type": "string"
+				},
+				"Sales": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Product": {
+								"type": "string"
+							},
+							"ManufacturerProductCode": {
+								"type": "string"
+							},
+							"Units": {
+								"type": "integer"
+							},
+							"Value": {
+								"type": "number"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
