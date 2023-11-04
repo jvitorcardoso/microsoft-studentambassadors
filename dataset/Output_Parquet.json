@@ -14,7 +14,7 @@
 			}
 		},
 		"folder": {
-			"name": "ADLS_Landing/azure-data-factory-by-example"
+			"name": "ADLS_Landing/SalesLT"
 		},
 		"annotations": [],
 		"type": "Parquet",
