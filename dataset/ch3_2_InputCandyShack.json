@@ -1,5 +1,5 @@
 {
-	"name": "ch3_InputSampleData_2",
+	"name": "ch3_2_InputCandyShack",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "adlsbraz01",

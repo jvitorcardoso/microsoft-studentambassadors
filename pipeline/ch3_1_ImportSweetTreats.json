@@ -1,5 +1,5 @@
 {
-	"name": "ch3_ImportSampleData_1",
+	"name": "ch3_1_ImportSweetTreats",
 	"properties": {
 		"activities": [
 			{
@@ -47,13 +47,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ch3_InputSampleData_1",
+						"referenceName": "ch3_1_InputSweetTreats",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "ch3_OutputSampleData_1",
+						"referenceName": "ch_3_Output",
 						"type": "DatasetReference"
 					}
 				]

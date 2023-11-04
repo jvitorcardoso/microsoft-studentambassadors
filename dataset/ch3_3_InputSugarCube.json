@@ -1,5 +1,5 @@
 {
-	"name": "ch3_InputSampleData_3",
+	"name": "ch3_3_InputSugarCube",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "adlsbraz01",

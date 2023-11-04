@@ -28,13 +28,6 @@
 							"type": "JsonReadSettings"
 						}
 					},
-					"sink": {
-						"type": "AzureSqlSink",
-						"preCopyScript": "TRUNCATE TABLE dbo.Sales_LOAD",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false,
-						"disableMetricsCollection": false
-					},
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
@@ -90,13 +83,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ch3_InputSampleData_3",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "ch3_OutputSampleData_3",
+						"referenceName": "ch3_3_InputSugarCube",
 						"type": "DatasetReference"
 					}
 				]

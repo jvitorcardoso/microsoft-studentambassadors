@@ -1,5 +1,5 @@
 {
-	"name": "ch3_OutputSampleData_1",
+	"name": "ch_3_Output",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase1",
