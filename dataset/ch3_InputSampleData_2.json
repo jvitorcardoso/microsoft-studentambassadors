@@ -1,5 +1,5 @@
 {
-	"name": "ch3_InputSampleData_1",
+	"name": "ch3_InputSampleData_2",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "adlsbraz01",
@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "landing/azure-data-factory-by-example/SampleData/SweetTreats",
+				"folderPath": "landing/azure-data-factory-by-example/SampleData/CandyShack",
 				"fileSystem": "landing"
 			},
 			"columnDelimiter": ",",
