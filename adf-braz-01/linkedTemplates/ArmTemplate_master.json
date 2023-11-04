@@ -1,0 +1,77 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-braz-01"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
+		"adb01_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'adb01'"
+		},
+		"adlsbraz01_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'adlsbraz01'"
+		},
+		"adb01_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0907-151542-c9h6og9h"
+		},
+		"adlsbraz01_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsbraz01.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adf-braz-01_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
+					"adb01_accessToken": {
+						"value": "[parameters('adb01_accessToken')]"
+					},
+					"adlsbraz01_accountKey": {
+						"value": "[parameters('adlsbraz01_accountKey')]"
+					},
+					"adb01_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('adb01_properties_typeProperties_existingClusterId')]"
+					},
+					"adlsbraz01_properties_typeProperties_url": {
+						"value": "[parameters('adlsbraz01_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
