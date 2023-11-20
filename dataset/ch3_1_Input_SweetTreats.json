@@ -1,5 +1,5 @@
 {
-	"name": "ch3_1_InputSweetTreats",
+	"name": "ch3_1_Input_SweetTreats",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "adlsbraz01",

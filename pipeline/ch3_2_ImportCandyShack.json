@@ -97,7 +97,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ch3_2_InputCandyShack",
+						"referenceName": "ch3_2_Input_CandyShack",
 						"type": "DatasetReference"
 					}
 				],

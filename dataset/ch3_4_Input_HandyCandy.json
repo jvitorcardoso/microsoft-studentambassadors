@@ -1,5 +1,5 @@
 {
-	"name": "ch3_3_Input_SugarCube",
+	"name": "ch3_4_Input_HandyCandy",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "adlsbraz01",
@@ -13,21 +13,23 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "April.json",
-				"folderPath": "landing/azure-data-factory-by-example/SampleData/SugarCube/2020/Q2",
+				"folderPath": "landing/azure-data-factory-by-example/SampleData/HandyCandy",
 				"fileSystem": "landing"
 			}
 		},
 		"schema": {
 			"type": "object",
 			"properties": {
-				"Month": {
+				"TransactionId": {
 					"type": "string"
 				},
-				"Company": {
+				"TransactionDate": {
 					"type": "string"
 				},
-				"Sales": {
+				"StoreId": {
+					"type": "string"
+				},
+				"Items": {
 					"type": "array",
 					"items": {
 						"type": "object",
@@ -35,13 +37,7 @@
 							"Product": {
 								"type": "string"
 							},
-							"ManufacturerProductCode": {
-								"type": "string"
-							},
-							"Units": {
-								"type": "integer"
-							},
-							"Value": {
+							"Price": {
 								"type": "number"
 							}
 						}

@@ -99,7 +99,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ch3_3_InputSugarCube",
+						"referenceName": "ch3_3_Input_SugarCube",
 						"type": "DatasetReference"
 					}
 				],
