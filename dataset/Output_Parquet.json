@@ -14,7 +14,7 @@
 			}
 		},
 		"folder": {
-			"name": "ADLS_Landing/SalesLT"
+			"name": "AZ_SQL/SalesLT"
 		},
 		"annotations": [],
 		"type": "Parquet",
