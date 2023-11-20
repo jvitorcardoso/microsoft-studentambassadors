@@ -99,13 +99,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ch3_3_Input_SugarCube",
+						"referenceName": "ch3_Input_3_SugarCube",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "ch_3_Output",
+						"referenceName": "ch_3_Output_1_AZ_SQL_DB",
 						"type": "DatasetReference"
 					}
 				]

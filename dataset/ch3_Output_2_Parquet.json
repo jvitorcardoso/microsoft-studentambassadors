@@ -1,5 +1,5 @@
 {
-	"name": "ch3_Input_1_SweetTreats",
+	"name": "ch3_Output_2_Parquet",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "adlsbraz01",
@@ -9,17 +9,14 @@
 			"name": "ADLS_Landing/azure-data-factory-by-example/ch3"
 		},
 		"annotations": [],
-		"type": "DelimitedText",
+		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "landing/azure-data-factory-by-example/SampleData/SweetTreats",
-				"fileSystem": "landing"
+				"folderPath": "process/HandyCandy",
+				"fileSystem": "process"
 			},
-			"columnDelimiter": ",",
-			"escapeChar": "\\",
-			"firstRowAsHeader": true,
-			"quoteChar": "\""
+			"compressionCodec": "snappy"
 		},
 		"schema": []
 	}

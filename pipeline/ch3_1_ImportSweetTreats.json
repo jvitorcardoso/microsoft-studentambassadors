@@ -47,13 +47,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ch3_1_Input_SweetTreats",
+						"referenceName": "ch3_Input_1_SweetTreats",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "ch_3_Output",
+						"referenceName": "ch_3_Output_1_AZ_SQL_DB",
 						"type": "DatasetReference"
 					}
 				]

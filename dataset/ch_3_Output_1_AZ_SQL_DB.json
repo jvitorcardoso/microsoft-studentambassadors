@@ -1,5 +1,5 @@
 {
-	"name": "ch_3_Output_AZ_SQL_DB",
+	"name": "ch_3_Output_1_AZ_SQL_DB",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase1",
