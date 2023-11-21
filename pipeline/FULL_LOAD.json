@@ -146,6 +146,8 @@
 		"folder": {
 			"name": "AdventureWorks/SalesLT"
 		},
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2023-11-04T00:09:38Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }

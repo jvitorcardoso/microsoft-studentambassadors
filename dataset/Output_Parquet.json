@@ -14,7 +14,7 @@
 			}
 		},
 		"folder": {
-			"name": "AZ_SQL/SalesLT"
+			"name": "ADLS_Landing/SalesLT"
 		},
 		"annotations": [],
 		"type": "Parquet",
@@ -34,5 +34,6 @@
 			"compressionCodec": "snappy"
 		},
 		"schema": []
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

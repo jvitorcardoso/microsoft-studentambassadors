@@ -2,8 +2,14 @@
 	"name": "adf-braz-01",
 	"location": "brazilsouth",
 	"identity": {
-		"type": "SystemAssigned",
+		"type": "SystemAssigned,UserAssigned",
 		"principalId": "ff82f4f4-ba04-4d39-870a-68fa7ec10ab6",
-		"tenantId": "84c31ca0-ac3b-4eae-ad11-519d80233e6f"
+		"tenantId": "84c31ca0-ac3b-4eae-ad11-519d80233e6f",
+		"userAssignedIdentities": {
+			"/subscriptions/8f20b1d8-d180-4c00-bf77-426689c98a79/resourcegroups/RG01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/adfmanagedidentity": {
+				"clientId": "dea215ff-bdcf-41bd-9df9-1d6b0b467612",
+				"principalId": "1a0b3689-eca2-4c98-ad06-fbced58d3bd9"
+			}
+		}
 	}
 }

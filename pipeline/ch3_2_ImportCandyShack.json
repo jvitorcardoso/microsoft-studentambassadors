@@ -97,13 +97,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ch3_Input_2_CandyShack",
+						"referenceName": "ch3_2_InputCandyShack",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "ch3_Output_1_AZ_SQL_DB",
+						"referenceName": "ch_3_Output",
 						"type": "DatasetReference"
 					}
 				]
@@ -112,6 +112,8 @@
 		"folder": {
 			"name": "Samples/ch3"
 		},
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2023-11-04T02:02:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }

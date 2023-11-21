@@ -41,42 +41,6 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "['Product']"
-								},
-								"sink": {
-									"name": "Product",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "['ManufacturerProductCode']"
-								},
-								"sink": {
-									"name": "ManufacturerProductCode",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "['Units']"
-								},
-								"sink": {
-									"name": "UnitsSold",
-									"type": "Int32"
-								}
-							},
-							{
-								"source": {
-									"path": "['Value']"
-								},
-								"sink": {
-									"name": "SalesValueUSD",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
 									"path": "$['Month']"
 								},
 								"sink": {
@@ -92,20 +56,56 @@
 									"name": "Retailer",
 									"type": "String"
 								}
+							},
+							{
+								"source": {
+									"path": "$['Sales'][0]['Product']"
+								},
+								"sink": {
+									"name": "Product",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Sales'][0]['ManufacturerProductCode']"
+								},
+								"sink": {
+									"name": "ManufacturerProductCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Sales'][0]['Units']"
+								},
+								"sink": {
+									"name": "UnitsSold",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Sales'][0]['Value']"
+								},
+								"sink": {
+									"name": "SalesValueUSD",
+									"type": "Decimal"
+								}
 							}
 						],
-						"collectionReference": "$['Sales']"
+						"collectionReference": ""
 					}
 				},
 				"inputs": [
 					{
-						"referenceName": "ch3_Input_3_SugarCube",
+						"referenceName": "ch3_3_InputSugarCube",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "ch3_Output_1_AZ_SQL_DB",
+						"referenceName": "ch_3_Output",
 						"type": "DatasetReference"
 					}
 				]
@@ -114,6 +114,8 @@
 		"folder": {
 			"name": "Samples/ch3"
 		},
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2023-11-04T02:02:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }
