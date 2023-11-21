@@ -1,5 +1,5 @@
 {
-	"name": "ch3_1_ImportSweetTreats",
+	"name": "pl_1_ImportSweetTreats",
 	"properties": {
 		"activities": [
 			{
@@ -47,23 +47,21 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ch3_1_InputSweetTreats",
+						"referenceName": "ch3_Input_1_SweetTreats",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "ch_3_Output",
+						"referenceName": "ch3_Output_1_AZ_SQL_DB",
 						"type": "DatasetReference"
 					}
 				]
 			}
 		],
 		"folder": {
-			"name": "Samples/ch3"
+			"name": "chapter_03/chapter_03"
 		},
-		"annotations": [],
-		"lastPublishTime": "2023-11-04T02:02:19Z"
-	},
-	"type": "Microsoft.DataFactory/factories/pipelines"
+		"annotations": []
+	}
 }

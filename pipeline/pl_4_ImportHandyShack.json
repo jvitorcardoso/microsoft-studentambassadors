@@ -1,5 +1,5 @@
 {
-	"name": "ch3_4_ImportHandyShack",
+	"name": "pl_4_ImportHandyShack",
 	"properties": {
 		"activities": [
 			{
@@ -86,16 +86,9 @@
 									"type": "Int16"
 								}
 							}
-						],
-						"collectionReference": "$['Items']"
+						]
 					}
 				},
-				"inputs": [
-					{
-						"referenceName": "ch3_Input_4_HandyCandy",
-						"type": "DatasetReference"
-					}
-				],
 				"outputs": [
 					{
 						"referenceName": "ch3_Output_2_Parquet",
@@ -105,7 +98,7 @@
 			}
 		],
 		"folder": {
-			"name": "Samples/ch3"
+			"name": "chapter_03/chapter_03"
 		},
 		"annotations": []
 	}

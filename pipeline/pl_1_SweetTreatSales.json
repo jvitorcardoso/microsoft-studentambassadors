@@ -1,0 +1,200 @@
+{
+	"name": "pl_1_SweetTreatSales",
+	"properties": {
+		"activities": [
+			{
+				"name": "Import Sample Data",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Lookup RunSeqNo",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "SourceFileName",
+								"value": "$$FILEPATH"
+							},
+							{
+								"name": "RunSeqNo",
+								"value": {
+									"value": "@activity('Lookup RunSeqNo').output.firstRow.RunSeqNo",
+									"type": "Expression"
+								}
+							}
+						],
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": "landing/azure-data-factory-by-example/SampleData/SweetTreats",
+							"wildcardFileName": "*",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.Sales_LOAD",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ch3_Input_1_SweetTreats",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ch3_Output_1_AZ_SQL_DB",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Log pipeline outcome",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Import Sample Data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[LogPipelineEnd]",
+					"storedProcedureParameters": {
+						"FilesRead": {
+							"value": {
+								"value": "@activity('Import Sample Data').output.filesRead",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"RowsCopied": {
+							"value": {
+								"value": "@activity('Import Sample Data').output.rowsCopied",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"RowsRead": {
+							"value": {
+								"value": "@activity('Import Sample Data').output.rowsRead",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"RunEndDateTime": {
+							"value": {
+								"value": "@convertTimeZone(utcNow(), 'UTC', 'E. South America Standard Time')",
+								"type": "Expression"
+							},
+							"type": "DateTime"
+						},
+						"RunSeqNo": {
+							"value": {
+								"value": "@activity('Lookup RunSeqNo').output.firstRow.RunSeqNo",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"RunStatus": {
+							"value": "Done",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Lookup RunSeqNo",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[LogPipelineStart]",
+						"storedProcedureParameters": {
+							"Comments": {
+								"type": "String",
+								"value": null
+							},
+							"PipelineRunId": {
+								"type": "Guid",
+								"value": {
+									"value": "@pipeline().RunId",
+									"type": "Expression"
+								}
+							},
+							"RunStartDateTime": {
+								"type": "DateTime",
+								"value": {
+									"value": "@convertTimeZone(utcNow(), 'UTC', 'E. South America Standard Time')",
+									"type": "Expression"
+								}
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "Input_SQL",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "chapter_04"
+		},
+		"annotations": []
+	}
+}
