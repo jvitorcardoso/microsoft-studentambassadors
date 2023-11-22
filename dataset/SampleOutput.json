@@ -5,6 +5,11 @@
 			"referenceName": "adlsbraz01",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"par_country_code": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "Nielsen"
 		},
@@ -13,6 +18,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().par_country_code",
+					"type": "Expression"
+				},
 				"folderPath": "landing/nielsen/new_structure/sample_csv",
 				"fileSystem": "landing"
 			}
