@@ -5,11 +5,6 @@
 			"referenceName": "adlsbraz01",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"par_country": {
-				"type": "string"
-			}
-		},
 		"folder": {
 			"name": "Nielsen"
 		},
