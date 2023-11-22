@@ -1,0 +1,26 @@
+{
+	"name": "SampleOutput",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlsbraz01",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"par_country": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Nielsen"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "landing/nielsen/new_structure/sample_csv",
+				"fileSystem": "landing"
+			}
+		}
+	}
+}
