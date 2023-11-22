@@ -1,14 +1,9 @@
 {
-	"name": "SampleOutput",
+	"name": "SampleZip",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "adlsbraz01",
 			"type": "LinkedServiceReference"
-		},
-		"parameters": {
-			"par_country_code": {
-				"type": "string"
-			}
 		},
 		"folder": {
 			"name": "Nielsen"
@@ -18,11 +13,12 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": {
-					"value": "@concat('landing/nielsen/new_structure/sample_csv/', dataset().par_country_code)",
-					"type": "Expression"
-				},
+				"fileName": "ShareModel_Sample.zip",
+				"folderPath": "landing/nielsen/new_structure/sample_zip",
 				"fileSystem": "landing"
+			},
+			"compression": {
+				"type": "ZipDeflate"
 			}
 		}
 	}
